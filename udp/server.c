@@ -16,8 +16,8 @@ void func(int fd)
     for (;;)
     {
         bzero(buff, MAXLINE);
-        n = recvfrom(fd, (char *)buff, MAXLINE, MSG_WAITALL, (struct sockaddr *)&cliaddr, &len);
-        buff[n] = '\0';
+        n = recvfrom(fd, buff, MAXLINE, MSG_WAITALL, (struct sockaddr *)&cliaddr, &len);
+        // buff[n] = '\0';
         printf("Client : %s\nTo Client:", buff);
         bzero(buff, MAXLINE);
         n = 0;
@@ -35,8 +35,8 @@ int main()
         perror("socket creation failed");
         exit(EXIT_FAILURE);
     }
-    memset(&servaddr, 0, sizeof(servaddr));
-    memset(&cliaddr, 0, sizeof(cliaddr));
+    bzero(&servaddr, sizeof(servaddr));
+    bzero(&cliaddr, sizeof(cliaddr));
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = INADDR_ANY;
     servaddr.sin_port = htons(PORT);

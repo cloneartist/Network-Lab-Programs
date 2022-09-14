@@ -30,7 +30,7 @@ int main()
 {
     char *ip = "127.0.0.1";
     int port = 5566;
-    int sockfd, len;
+    int sockfd;
     struct sockaddr_in servaddr;
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1)
